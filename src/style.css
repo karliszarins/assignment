@@ -61,20 +61,37 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
-.selector-available button {
+.selector-available input {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.selector-available button,
+.selector-available label {
   border: 1px solid #a3a3a3;
   background-color: #ececec;
   margin: 0;
   padding: 0;
   height: 32px;
+  line-height: 32px;
+  text-align: center;
   width: 130px;
   color: #114371;
   text-transform: uppercase;
   font-size: 16px;
   font-weight: 600;
   position: relative;
+  display: block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
 }
-.selector-available button span:before {
+.selector-available button span:before,
+.selector-available label span:before {
   content: 'x';
   color: transparent;
   font-weight: bold;
@@ -91,14 +108,17 @@ body {
   margin-top: -7px;
   border-radius: 3px;
 }
-.selector-available button:hover {
+.selector-available button:hover,
+.selector-available label:hover {
   background-color: #dcdcdc;
 }
-.selector-available button.active {
+.selector-available button.active,
+.selector-available input:checked + label {
   background-color: #ffffff;
 }
 
-.selector-available button.active span:before {
+.selector-available button.active span:before,
+.selector-available input:checked + label span:before {
   color: #ff0000;
 }
 .selector-available ul li,
