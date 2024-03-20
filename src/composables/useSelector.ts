@@ -1,18 +1,25 @@
-import { ref, computed, Ref } from 'vue';
+import { ref, computed, Ref, ComputedRef } from 'vue';
 
 import { Currency } from '../components/CurrencySelector/types';
+
+interface Selector {
+  selectedCurrencies: ComputedRef<Currency[]>;
+  selectedState: Ref<number[]>;
+  toggleItem: (id: number) => Ref<number[]>;
+  removeItem: (id: number) => Ref<number[]>;
+}
 
 export function useSelector(
   currencies: Currency[] = [],
   selected: number[] = []
-) {
+): Selector {
   const filterSelected = (items: number[] = []): number[] => {
     return items.filter((value, index, self) => self.indexOf(value) === index); // remove duplicates
   };
 
-  const selectedState: Ref<number[]> = ref(filterSelected(selected));
+  const selectedState = ref(filterSelected(selected));
 
-  const selectedCurrencies = computed<Currency[]>(
+  const selectedCurrencies = computed(
     () =>
       selectedState.value
         .map((id) => currencies.find((currency) => currency.id === id))
@@ -20,7 +27,7 @@ export function useSelector(
     // .filter(Boolean) // remove undefined
   );
 
-  const toggleItem = (id: number): Ref => {
+  const toggleItem = (id: number) => {
     if (selectedState.value.includes(id)) {
       let i = selectedState.value.indexOf(id);
       if (i > -1) {
@@ -32,7 +39,7 @@ export function useSelector(
     return selectedState;
   };
 
-  const removeItem = (id: number): Ref => {
+  const removeItem = (id: number) => {
     let i = selectedState.value.indexOf(id);
     if (i > -1) {
       selectedState.value.splice(i, 1);
