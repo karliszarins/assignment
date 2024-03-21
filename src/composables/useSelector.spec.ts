@@ -1,18 +1,14 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { useSelector } from '@/composables/useSelector';
 import { Currency } from '@/types';
 
 describe('useSelector composable', () => {
-  let currencies: Currency[], selected: number[];
-
-  beforeEach(() => {
-    currencies = [
-      { id: 1, symbol: 'EUR' },
-      { id: 2, symbol: 'USD' },
-      { id: 3, symbol: 'GBP' },
-    ];
-    selected = [1];
-  });
+  const currencies: Currency[] = [
+    { id: 1, symbol: 'EUR' },
+    { id: 2, symbol: 'USD' },
+    { id: 3, symbol: 'GBP' },
+  ];
+  const selected: number[] = [1];
 
   it('initializes selectedCurrencies based on passed props', () => {
     const { selectedCurrencies } = useSelector(currencies, selected);
