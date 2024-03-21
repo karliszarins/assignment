@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { useSelector } from './useSelector';
-import { Currency } from '@/components/CurrencySelector/types';
+import { useSelector } from '@/composables/useSelector';
+import { Currency } from '@/types';
 
 describe('useSelector composable', () => {
   let currencies: Currency[], selected: number[];

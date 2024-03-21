@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import CurrencySelector from './components/CurrencySelector';
-import CurrencyChecklist from './components/CurrencyChecklist';
+import CurrencySelector from '@/components/CurrencySelector';
+import CurrencyChecklist from '@/components/CurrencyChecklist';
 </script>
 
 <template>

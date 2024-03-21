@@ -1,6 +1,6 @@
 import { ref, computed, Ref, ComputedRef } from 'vue';
 
-import { Currency } from '../components/CurrencySelector/types';
+import { Currency } from '@/types';
 
 interface Selector {
   selectedCurrencies: ComputedRef<Currency[]>;

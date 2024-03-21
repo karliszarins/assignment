@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { mount, VueWrapper } from '@vue/test-utils';
-import CurrencySelector from './CurrencySelector.vue';
-import { Currency } from '@/components/CurrencySelector/types';
+import CurrencySelector from '@/components/CurrencySelector';
+import { Currency } from '@/types';
 
 type DefaultProps = { currencies: Currency[]; selected: number[] };
 

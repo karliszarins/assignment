@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Currency } from './types';
+import { Currency } from '@/types';
 
 const { currencies, selected, toggleItem } = defineProps<{
   currencies?: Currency[];

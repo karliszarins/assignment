@@ -9,4 +9,9 @@ export default defineConfig({
     environment: 'happy-dom',
     logLevel: 'info',
   },
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
 });

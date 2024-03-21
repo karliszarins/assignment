@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Currency } from './types';
-import { useSelector } from '../../composables/useSelector';
-import { List, SelectedList } from './';
+import { Currency } from '@/types';
+import { useSelector } from '@/composables/useSelector';
+import { List, SelectedList } from '@/components/CurrencySelector';
 
 const { currencies, selected } = defineProps<{
   currencies?: Currency[];
