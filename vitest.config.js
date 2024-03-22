@@ -8,6 +8,9 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     logLevel: 'info',
+    coverage: {
+      provider: 'v8',
+    },
   },
   resolve: {
     alias: {
