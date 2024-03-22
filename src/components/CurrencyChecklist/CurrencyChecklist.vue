@@ -28,11 +28,12 @@ const { selectedCurrencies, selectedState, removeItem } = useSelector(
         <li v-for="currency in currencies" :key="currency.id">
           <input
             type="checkbox"
-            :id="currency.id.toString()"
+            :id="`checkbox-${currency.id}`"
             :value="currency.id"
+            name="currencies"
             v-model="selectedState"
           />
-          <label :for="currency.id.toString()">
+          <label :for="`checkbox-${currency.id}`">
             <span>{{ currency.symbol }}</span>
           </label>
         </li>
