@@ -13,11 +13,7 @@ export function useSelector(
   currencies: Currency[] = [],
   selected: number[] = []
 ): Selector {
-  const filterSelected = (items: number[] = []): number[] => {
-    return items.filter((value, index, self) => self.indexOf(value) === index); // remove duplicates
-  };
-
-  const selectedState = ref(filterSelected(selected));
+  const selectedState = ref(Array.from(new Set(selected)));
 
   const selectedCurrencies = computed(
     () =>
