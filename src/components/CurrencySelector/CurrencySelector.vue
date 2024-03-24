@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Currency } from '@/types';
+import type Currency from '@/types/Currency';
+
 import { useSelector } from '@/composables/useSelector';
 import { List, SelectedList } from '@/components/CurrencySelector';
 
@@ -14,11 +15,11 @@ const { selectedCurrencies, selectedState, toggleItem, removeItem } =
 
 <template>
   <div class="currency-selector">
-    <SelectedList :currencies="selectedCurrencies" :removeItem="removeItem" />
+    <SelectedList :currencies="selectedCurrencies" @remove="removeItem" />
     <List
       :currencies="currencies"
       :selected="selectedState"
-      :toggleItem="toggleItem"
+      @toggle="toggleItem"
     />
   </div>
 </template>

@@ -1,12 +1,15 @@
-import { ref, computed, Ref, ComputedRef } from 'vue';
+import type { Ref, ComputedRef } from 'vue';
+import type Currency from '@/types/Currency';
 
-import { Currency } from '@/types';
+import { ref, computed } from 'vue';
+
+type Operations = (id: number) => Ref<number[]>;
 
 interface Selector {
   selectedCurrencies: ComputedRef<Currency[]>;
   selectedState: Ref<number[]>;
-  toggleItem: (id: number) => Ref<number[]>;
-  removeItem: (id: number) => Ref<number[]>;
+  toggleItem: Operations;
+  removeItem: Operations;
 }
 
 export function useSelector(
@@ -23,7 +26,7 @@ export function useSelector(
     // .filter(Boolean) // remove undefined
   );
 
-  const toggleItem = (id: number) => {
+  const toggleItem: Operations = (id: number) => {
     if (selectedState.value.includes(id)) {
       let i = selectedState.value.indexOf(id);
       if (i > -1) {
@@ -35,7 +38,7 @@ export function useSelector(
     return selectedState;
   };
 
-  const removeItem = (id: number) => {
+  const removeItem: Operations = (id: number) => {
     let i = selectedState.value.indexOf(id);
     if (i > -1) {
       selectedState.value.splice(i, 1);

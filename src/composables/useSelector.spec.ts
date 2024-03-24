@@ -1,6 +1,7 @@
+import type Currency from '@/types/Currency';
+
 import { describe, it, expect } from 'vitest';
 import { useSelector } from '@/composables/useSelector';
-import { Currency } from '@/types';
 
 describe('useSelector composable', () => {
   const currencies: Currency[] = [

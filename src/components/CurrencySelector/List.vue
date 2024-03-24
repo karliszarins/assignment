@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { Currency } from '@/types';
+import type Currency from '@/types/Currency';
 
-const { currencies, selected, toggleItem } = defineProps<{
+const { currencies, selected } = defineProps<{
   currencies?: Currency[];
   selected?: number[];
-  toggleItem: Function;
+}>();
+
+const emit = defineEmits<{
+  toggle: [id: number];
 }>();
 </script>
 
@@ -14,7 +17,7 @@ const { currencies, selected, toggleItem } = defineProps<{
       <li v-for="currency in currencies" :key="currency.id">
         <button
           :class="{ active: selected?.includes(currency.id) }"
-          @click="toggleItem(currency.id)"
+          @click="emit('toggle', currency.id)"
         >
           <span>{{ currency.symbol }}</span>
         </button>

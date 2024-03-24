@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { Currency } from '@/types';
+import type Currency from '@/types/Currency';
 
-const { currencies, removeItem } = defineProps<{
+const { currencies } = defineProps<{
   currencies?: Currency[];
-  removeItem: Function;
+}>();
+
+const emit = defineEmits<{
+  remove: [id: number];
 }>();
 </script>
 
@@ -12,7 +15,7 @@ const { currencies, removeItem } = defineProps<{
     <TransitionGroup tag="ul" name="list">
       <li v-for="currency in currencies" :key="currency.id">
         <span>{{ currency.symbol }}</span>
-        <button class="remove" @click="removeItem(currency.id)">x</button>
+        <button class="remove" @click="emit('remove', currency.id)">x</button>
       </li>
     </TransitionGroup>
   </div>
